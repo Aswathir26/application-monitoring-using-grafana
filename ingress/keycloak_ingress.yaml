@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kclk-ingress
+  namespace: nets
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/global-rate-limit: "10"
+    nginx.ingress.kubernetes.io/global-rate-limit-window: 1m
+spec:
+  ingressClassName: kclk
+  tls:
+  - hosts:
+    - auth.xyz.com
+    secretName: kclkcert
+  rules:
+    - host: auth.xyz.com
+      http:
+        paths:
+        - path: /(.*)
+          pathType: Prefix
+          backend:
+            service:
+              name: kclk-keycloak
+              port:
+                number: 8080
