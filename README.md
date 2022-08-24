@@ -60,22 +60,27 @@ Follow the given steps to monitor Applications, Kubernetes and Ingress controlle
 **step 2:**
 
     kubectl create namespace nets
-
-**step 3:**
+    
+**step 3:**    
+    
+    git clone https://github.com/Aswathir26/application-monitoring-using-grafana    
+    cd application-monitoring-using-grafana/
+    
+**step 4:**
 
 for logs monitoring
 
     cd loki
     helm install loki -f values.yaml bitnami/grafana-loki
 
-**step 4:**
+**step 5:**
 
 for metrics/kubernetes monitoring
 
     cd prometheus
     helm install logs -f values.yaml prometheus-community/kube-prometheus-stack
 
-**step 5:**
+**step 6:**
 
 for nginx ingress-controller monitoring (using prometheus)
 
@@ -84,7 +89,7 @@ for nginx ingress-controller monitoring (using prometheus)
     helm install kclk-ingress -f values.yaml bitnami/nginx-ingress-controller -n nets
 
    
-**step 6:**
+**step 7:**
 
     cd dashboard
     kubectl create configmap my-dashboard-application --from-file=Application_db.json
@@ -92,7 +97,7 @@ for nginx ingress-controller monitoring (using prometheus)
     kubectl create configmap my-dashboard-ingresscontroller --from-file=Ingresscontroller_db.json
     
 
-**step 7:**
+**step 8:**
 
 
     cd grafana
