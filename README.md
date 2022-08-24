@@ -63,7 +63,7 @@ Follow the given steps to monitor Applications, Kubernetes and Ingress controlle
     
 **step 3:**    
     
-    git clone https://github.com/Aswathir26/application-monitoring-using-grafana    
+    git clone https://github.com/Aswathir26/application-monitoring-using-grafana.git    
     cd application-monitoring-using-grafana/
     
 **step 4:**
